@@ -1,20 +1,28 @@
 package view;
 
+import java.util.List;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import model.CompanyAccount;
+import model.Material;
+import model.MaterialCase;
 import util.FXUtil;
 import util.ImgUtil;
 
@@ -122,7 +130,6 @@ public class CompanyProfilePage extends BorderPane {
 		hBox.getChildren().addAll(iv1, iv2, iv3);
 		return hBox;
 	}
-<<<<<<< HEAD
 
 	private Button loadBtSearch() {
 		Button bt = new Button("Search Materials");
@@ -156,22 +163,15 @@ public class CompanyProfilePage extends BorderPane {
 			root.setTop(hBox);
 			root.setCenter(pane);
 			Stage stage = new Stage();
+			stage.setWidth(900);
 			stage.setScene(new Scene(root));
 			stage.show();
 		});
 		return bt;
 	}
-=======
->>>>>>> 7a26eb00f508a5f666b89941998c8e3d6b44951c
 
 	public VBox loadBtnBox() {
-		Button btSearch = new Button("Find Orders"); // Search Customer Orders
-		btSearch.setPrefWidth(FXUtil.BTN_WIDTH);
-		btSearch.setOnAction(e -> {
-			
-		});
-		btSearch.setFont(new Font(18));
-
+		Button btSearch = loadBtSearch();
 		Button btMessages = new Button("Messages"); // Only display
 		btMessages.setPrefWidth(FXUtil.BTN_WIDTH);
 		btMessages.setOnAction(e -> {

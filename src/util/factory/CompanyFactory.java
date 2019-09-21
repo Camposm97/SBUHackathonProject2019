@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Company;
+import model.MaterialCase;
 import util.Util;
 
 public class CompanyFactory {
@@ -27,7 +28,9 @@ public class CompanyFactory {
 	
 	public Company emitCompany() {
 		String name = names.get((int)(Math.random() * names.size()));
-		Company c = new Company(name, matCaseFactory.emitMaterialCases(), Util.emitCompEmail(name), Util.emitPhone());
+		List<MaterialCase> list = matCaseFactory.emitMaterialCases();
+		System.out.println(list.get(0));
+		Company c = new Company(name, list, Util.emitCompEmail(name), Util.emitPhone());
 		return c;
 	}
 }
