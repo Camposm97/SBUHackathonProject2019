@@ -24,7 +24,6 @@ import util.FXUtil;
 public class CustomerRegistrationPage extends BorderPane {
 
 	public CustomerRegistrationPage() {
-
 		GridPane customerGridPane = new GridPane();
 		Label customerFirstName = new Label("First Name: ");
 		customerFirstName.setTextFill(Color.BLACK);
@@ -48,7 +47,6 @@ public class CustomerRegistrationPage extends BorderPane {
 		Label customerUsername = new Label("Username: ");
 		customerZipCode.setTextFill(Color.BLACK);
 		customerZipCode.setFont(new Font("Arial", 24));
-		TextField genderTextField = new TextField();
 
 		TextField customerFirstNameText = new TextField();
 		TextField customerLastNameText = new TextField();
@@ -62,29 +60,31 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerGetProfilePic.setFont(new Font("Arial", 18));
 		Button customerConfirmRegister = new Button("Confirm Registration");
 		customerConfirmRegister.setFont(new Font("Arial", 18));
+		
+		ComboBox<Gender> cb = FXUtil.loadCb(Gender.values());
+		cb.setValue(Gender.Male);
 		customerConfirmRegister.setOnAction(e -> {
 			Scene scene = this.getScene();
-			
-			
-			
 			scene.setRoot(new CustomerLoginPage());
-			ComboBox<Gender> cb = FXUtil.loadCb(Gender.values());
+			
 			Name name = new Name(customerFirstNameText.getText(), customerLastNameText.getText(), cb.getValue());
-			
 			Customer cus = new Customer(name);
-			
-			CustomerAccount cusAcc = new CustomerAccount(customerUsernameText.getText(), customerPasswordText.getText(), cus);
-			
+			CustomerAccount cusAcc = new CustomerAccount(customerUsernameText.getText(), customerPasswordText.getText(),
+					cus);
+			char c = Character.toLowerCase(cus.getName().getFirstName().charAt(0));
+			if (!Character.isAlphabetic(c)) {
+				cusAcc.setImageUrl("a.png");
+			} else {
+				cusAcc.setImageUrl(c + ".png");
+			}
 			App.accts.put(customerUsernameText.getText(), cusAcc);
 		});
 
-		
 		Button mainMenu = new Button("Main Menu");
 		mainMenu.setOnAction(e -> {
 			Scene scene = this.getScene();
 			scene.setRoot(new MainPage());
 		});
-
 
 		mainMenu.setFont(new Font("Arial", 18));
 		mainMenu.setMinSize(100, 50);
@@ -97,7 +97,7 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerGridPane.add(customerLastName, 0, 1);
 		customerGridPane.add(customerLastNameText, 1, 1);
 		customerGridPane.add(customerGender, 0, 2);
-		customerGridPane.add(genderTextField, 1, 2);
+		customerGridPane.add(cb, 1, 2);
 		customerGridPane.add(customerEmail, 0, 3);
 		customerGridPane.add(customerEmailText, 1, 3);
 		customerGridPane.add(customerPassword, 0, 4);
@@ -123,6 +123,5 @@ public class CustomerRegistrationPage extends BorderPane {
 		setBottom(hBox);
 		setCenter(vBox);
 		setLeft(customerGridPane);
-
 	}
 }

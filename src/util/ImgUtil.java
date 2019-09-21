@@ -18,7 +18,15 @@ public class ImgUtil {
 		return new Image(fis);
 	}
 	
-	public static ImageView loadHalfImgV(Image img) {
+	public static ImageView loadImgVR(String url, double ratio) {
+		Image img = loadImg(url);
+		ImageView iv = new ImageView(img);
+		iv.setFitWidth(img.getWidth() * ratio);
+		iv.setFitHeight(img.getHeight() * ratio);
+		return iv;
+	}
+	
+	public static ImageView loadQImgV(Image img) {
 		ImageView iv = new ImageView(img);
 		iv.setFitWidth(img.getWidth() * 0.25);
 		iv.setFitHeight(img.getHeight() * 0.25);

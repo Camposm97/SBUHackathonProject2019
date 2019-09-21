@@ -46,8 +46,8 @@ public class CompanyProfilePage extends BorderPane {
 		Label lblLittle = new Label("Info");
 		lblLittle.setFont(new Font("Arial", 15));
 
-		Image img = coAcct.getImage();
-		ImageView ivLogo = ImgUtil.loadHalfImgV(img);
+		Image img = ImgUtil.loadImg("images/" + coAcct.getImageUrl());
+		ImageView ivLogo = ImgUtil.loadQImgV(img);
 
 		Separator sep = new Separator(Orientation.HORIZONTAL);
 		sep.setPrefSize(200, 20);
@@ -82,7 +82,7 @@ public class CompanyProfilePage extends BorderPane {
 
 		Label rating = new Label("Ratings: ");
 		rating.setFont(new Font("Arial", 30));
-		Image starImage = new Image("usestar.jpg");
+		Image starImage = ImgUtil.loadImg("images/usestar.jpg");
 		ImageView starView = new ImageView(starImage);
 		Label ratingNumber = new Label("10.0");
 		ratingNumber.setFont(new Font("Arial", 30));
@@ -106,7 +106,6 @@ public class CompanyProfilePage extends BorderPane {
 		sep3.setPrefSize(400, 20);
 		generalInfo.getChildren().addAll(lblCoName, starBox, sep3, prevWork, loadPrevWork());
 
-		// generalInfo.getChildren().addAll(companyName, starBox);
 		generalInfo.setPadding(new Insets(60, 20, 20, 20));
 		setCenter(generalInfo);
 		setLeft(vBox);
@@ -115,22 +114,20 @@ public class CompanyProfilePage extends BorderPane {
 	}
 	
 	public HBox loadPrevWork() {
-		HBox imagesOfWork = new HBox(20);
-		ScrollPane i1 = new ScrollPane();
-		i1.setPrefSize(150, 150);
-		ScrollPane i2 = new ScrollPane();
-		i2.setPrefSize(150, 150);
-		ScrollPane i3 = new ScrollPane();
-		i3.setPrefSize(150, 150);
-		imagesOfWork.getChildren().addAll(i1, i2, i3);
-		return imagesOfWork;
+		HBox hBox = new HBox(10);
+		ImageView iv1, iv2, iv3;
+		iv1 = ImgUtil.loadQImgV(ImgUtil.loadImg("images/works/1.png"));
+		iv2 = ImgUtil.loadQImgV(ImgUtil.loadImg("images/works/2.png"));
+		iv3 = ImgUtil.loadQImgV(ImgUtil.loadImg("images/works/3.png"));
+		hBox.getChildren().addAll(iv1, iv2, iv3);
+		return hBox;
 	}
 
 	public VBox loadBtnBox() {
 		Button btSearch = new Button("Find Orders"); // Search Customer Orders
 		btSearch.setPrefWidth(FXUtil.BTN_WIDTH);
 		btSearch.setOnAction(e -> {
-
+			
 		});
 		btSearch.setFont(new Font(18));
 
