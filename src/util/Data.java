@@ -78,7 +78,6 @@ public class Data {
 			}
 			App.accts = map;
 			saveDataMap();
-			System.out.println(map.toString());
 			System.out.println("Successfully generated accounts and saved");
 		} catch (Exception e) {
 			e.printStackTrace();

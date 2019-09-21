@@ -1,6 +1,9 @@
 package model;
 
-public class Order {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Order implements Serializable {
 	private WorkType typeOfWork;
 	private MaterialCase matCase;
 	private Customer cus;
@@ -34,7 +37,4 @@ public class Order {
 	public void setCus(Customer cus) {
 		this.cus = cus;
 	}
-	
-	
-	
 }

@@ -3,6 +3,7 @@ package util.factory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Dimension;
@@ -12,13 +13,14 @@ import model.MaterialCase;
 public class MaterialCaseFactory {
 	private static final String CARPET = "data/carpet", TILE = "data/tiles", WOOD = "data/wood";
 	private LinkedList<MaterialCase> matList;
-
-	// Demo
-	public static void main(String[] args) throws FileNotFoundException {
-		MaterialCaseFactory f = new MaterialCaseFactory();
-		while (true) {
-			System.out.println(f.emitMaterialCase());
+	
+	public List<MaterialCase> emitMaterialCases() {
+		int n = (int)(Math.random() * matList.size());
+		List<MaterialCase> list = new LinkedList<>();
+		for (int i = 0; i < n; i++) {
+			list.add(matList.get(i));
 		}
+		return list;
 	}
 	
 	public MaterialCaseFactory() throws FileNotFoundException {

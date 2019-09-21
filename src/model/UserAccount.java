@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 import javafx.scene.image.Image;
+import util.ImgUtil;
 
 @SuppressWarnings("serial")
 public abstract class UserAccount implements Serializable {
@@ -32,7 +33,7 @@ public abstract class UserAccount implements Serializable {
 	}
 
 	public Image getImage() {
-		return new Image(imageUrl);
+		return ImgUtil.loadImg(imageUrl);
 	}
 
 	public void setImageUrl(String imageUrl) {
