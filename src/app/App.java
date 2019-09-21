@@ -20,12 +20,15 @@ public class App extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setScene(new Scene(new MainPage(), 900, 700));
+		stage.setScene(new Scene(new MainPage()));
 		stage.getIcons().add(ImgUtil.loadImg("images/e.png"));
 		stage.setResizable(false);
-		stage.setMaximized(true);
+//		stage.setMaximized(true);
 		stage.setTitle(TITLE);
 		stage.show();
+		stage.setOnCloseRequest(e -> {
+			Data.saveDataMap();
+		});
 	}
 	
 	public static void main(String[] args) {
