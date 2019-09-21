@@ -1,6 +1,9 @@
 package model;
 
-public class MaterialCrate {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class MaterialCrate implements Serializable {
 	private Material material;
 	
 	public MaterialCrate(Material material) {

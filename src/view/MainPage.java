@@ -1,6 +1,7 @@
 package view;
 
 
+import control.ColorButton;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,18 +23,13 @@ public class MainPage extends BorderPane {
 	}
 	
 	private Button loadBtCus() {
-		Button bt = new Button("I am Customer!");
+		Button bt = new ColorButton("I am Customer!", Color.BLUE);
 		bt.setOnAction(e -> {
 			// Change to Customer Login/SignUp Pane
 			Scene scene = this.getScene();
 			scene.setRoot(new CustomerLoginPage());
 		});
-		bt.setOnMouseEntered(e -> {
-			bt.setTextFill(Color.BLUE);
-		});
-		bt.setOnMouseExited(e -> {
-			bt.setTextFill(Color.BLACK);
-		});
+
 		bt.prefWidthProperty().bind(this.widthProperty().divide(2));
 		bt.prefHeightProperty().bind(this.heightProperty());
 		bt.setFont(BIG_FONT);
@@ -41,15 +37,9 @@ public class MainPage extends BorderPane {
 	}
 	
 	private Button loadBtCo() {
-		Button bt = new Button("I am Company!");
+		Button bt = new ColorButton("I am Company!", Color.BLUE);
 		bt.setOnAction(e -> {
 			// Change to Company Login/Signup Pane
-		});
-		bt.setOnMouseEntered(e -> {
-			bt.setTextFill(Color.BLUE);
-		});
-		bt.setOnMouseExited(e -> {
-			bt.setTextFill(Color.BLACK);
 		});
 		bt.prefWidthProperty().bind(this.widthProperty().divide(2));
 		bt.prefHeightProperty().bind(this.heightProperty());

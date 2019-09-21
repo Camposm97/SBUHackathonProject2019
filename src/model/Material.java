@@ -1,6 +1,9 @@
 package model;
 
-public class Material {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Material implements Serializable {
 	private String name;
 	private Dimension dimensions;
 	private double pricePerUnit;

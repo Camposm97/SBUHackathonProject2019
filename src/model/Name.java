@@ -1,6 +1,9 @@
 package model;
 
-public class Name {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Name implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Gender gender;

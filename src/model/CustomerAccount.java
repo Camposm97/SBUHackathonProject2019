@@ -1,6 +1,9 @@
 package model;
 
-public class CustomerAccount extends UserAccount {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class CustomerAccount extends UserAccount implements Serializable {
 	private Customer cus;
 	
 	public CustomerAccount(String username, String password, Customer cus) {

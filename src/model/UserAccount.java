@@ -1,8 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 import javafx.scene.image.Image;
 
-public abstract class UserAccount {
+@SuppressWarnings("serial")
+public abstract class UserAccount implements Serializable {
 	private String username;
 	private String password;
 	private String imageUrl;

@@ -1,6 +1,9 @@
 package model;
 
-public class Customer {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Customer implements Serializable {
 	private Name name;
 	
 	public Customer(Name name) {

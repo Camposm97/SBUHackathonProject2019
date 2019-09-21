@@ -1,6 +1,9 @@
 package model;
 
-public class Dimension {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Dimension implements Serializable {
 	private double width, height, length;
 
 	public Dimension(double width, double height, double length) {
