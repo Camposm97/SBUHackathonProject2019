@@ -25,7 +25,6 @@ public class MainPage extends BorderPane {
 	private Button loadBtCus() {
 		Button bt = new ColorButton("I am Customer!", Color.BLUE);
 		bt.setOnAction(e -> {
-			// Change to Customer Login/SignUp Pane
 			Scene scene = this.getScene();
 			scene.setRoot(new CustomerLoginPage());
 		});
@@ -39,7 +38,6 @@ public class MainPage extends BorderPane {
 	private Button loadBtCo() {
 		Button bt = new ColorButton("I am Company!", Color.BLUE);
 		bt.setOnAction(e -> {
-			// Change to Company Login/Signup Pane
 			Scene scene = this.getScene();
 			scene.setRoot(new CompanyLoginPage());
 		});

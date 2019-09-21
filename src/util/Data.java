@@ -10,8 +10,9 @@ import java.util.TreeMap;
 
 import app.App;
 import model.UserAccount;
+import util.factory.UserAccountFactory;
 
-public class DataUtil {
+public class Data {
 	private static final int SIZE = 10;
 	public static final File FILE_ACCTS = new File("data/accounts.dat");
 	

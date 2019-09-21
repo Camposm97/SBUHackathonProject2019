@@ -1,12 +1,11 @@
 package app;
 
 import java.util.TreeMap;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.UserAccount;
-import util.DataUtil;
+import util.Data;
 import util.ImgUtil;
 import view.MainPage;
 
@@ -16,7 +15,7 @@ public class App extends Application {
 	
 	@Override
 	public void init() {
-		accts = DataUtil.loadDataMap();
+		accts = Data.loadDataMap();
 	}
 	
 	@Override

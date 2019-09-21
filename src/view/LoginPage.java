@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 
 public abstract class LoginPage extends BorderPane {
+	private static final int FONT_SIZE = 24;
 	protected GridPane gridPane;
 	protected Button btLogin;
 	protected Label lblNote, lblUsername, lblPassword;
@@ -27,13 +28,15 @@ public abstract class LoginPage extends BorderPane {
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 		lblNote = new Label("Please enter your crendentials.");
-		lblNote.setFont(new Font(24));
+		lblNote.setFont(new Font(FONT_SIZE));
 		lblUsername = new Label("Username: ");
-		lblUsername.setFont(new Font(24));
+		lblUsername.setFont(new Font(FONT_SIZE));
 		lblPassword = new Label("Password: ");
-		lblPassword.setFont( new Font(24));		
+		lblPassword.setFont(new Font(FONT_SIZE));		
 		tfUsername = new TextField();
+		tfUsername.setFont(new Font(FONT_SIZE));
 		tfPassword = new PasswordField();
+		tfPassword.setFont(new Font(FONT_SIZE));
 		setOnKeyPressed(e -> {
 			if (e.getCode() == KeyCode.ENTER) {
 				btLogin.fire();

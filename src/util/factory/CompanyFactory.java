@@ -1,4 +1,4 @@
-package util;
+package util.factory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Company;
+import util.Util;
 
 public class CompanyFactory {
 	private static final String COMPANY_NAMES = "data/companyNames";

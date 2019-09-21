@@ -55,10 +55,10 @@ public class CompanyProfilePage extends BorderPane {
 		littleBox.getChildren().addAll(lblLittle, sep);
 		littleBox.setOpacity(0.5);
 
-		Label address = new Label("Address");
-		address.setFont(new Font("Arial", 24));
+		Label lblAddress1 = new Label("Address");
+		lblAddress1.setFont(new Font("Arial", 24));
 
-		Label actualAddress = new Label("123 fake street, \n 11706");
+		Label lblAddress2 = new Label("123 Some Street, \n 11706");
 
 		HBox littleBox2 = new HBox();
 		Label littleLabel2 = new Label("Specialties");
@@ -67,18 +67,18 @@ public class CompanyProfilePage extends BorderPane {
 		Separator sep2 = new Separator(Orientation.HORIZONTAL);
 		sep2.setPrefSize(200, 20);
 
-		Label specialtyDummy1 = new Label("Installing Floors");
-		specialtyDummy1.setFont(new Font("Arial", 16));
-		Label specialtyDummy2 = new Label("Installing Carpet");
-		specialtyDummy2.setFont(new Font("Arial", 16));
-		Label specialtyDummy3 = new Label("Installing Roofing");
-		specialtyDummy3.setFont(new Font("Arial", 16));
+		Label lbl1 = new Label("Installing Floors");
+		lbl1.setFont(new Font("Arial", 16));
+		Label lbl2 = new Label("Installing Carpet");
+		lbl2.setFont(new Font("Arial", 16));
+		Label lbl3 = new Label("Installing Roofing");
+		lbl3.setFont(new Font("Arial", 16));
 
 		littleBox2.getChildren().addAll(littleLabel2, sep2);
 		littleBox2.setOpacity(0.5);
 
-		vBox.getChildren().addAll(ivLogo, littleBox, address, actualAddress, littleBox2, specialtyDummy1,
-				specialtyDummy2, specialtyDummy3);
+		vBox.getChildren().addAll(ivLogo, littleBox, lblAddress1, lblAddress2, littleBox2, lbl1,
+				lbl2, lbl3);
 
 		Label rating = new Label("Ratings: ");
 		rating.setFont(new Font("Arial", 30));

@@ -1,9 +1,11 @@
-package util;
+package util.factory;
 
 import java.io.FileNotFoundException;
 
 import model.Company;
 import model.CompanyAccount;
+import util.PasswordUtil;
+import util.Util;
 
 public class CompanyAccountFactory {
 	private CompanyFactory cf;
@@ -14,7 +16,8 @@ public class CompanyAccountFactory {
 	
 	public CompanyAccount emitCoAcct() {
 		Company c = cf.emitCompany();
-		CompanyAccount coAcct = new CompanyAccount(Util.emitCoUser(c), Util.emitPassword(), c);
+		CompanyAccount coAcct = new CompanyAccount(Util.emitCoUser(c), 
+				PasswordUtil.emitPassword(), c);
 		char ch = Character.toLowerCase((c.getName().charAt(0)));
 		coAcct.setImageUrl(ch + ".png");
 		return coAcct;

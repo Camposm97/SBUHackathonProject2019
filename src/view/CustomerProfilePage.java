@@ -7,6 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import model.CustomerAccount;
 import util.FXUtil;
+import util.ImgUtil;
 
 public class CustomerProfilePage extends GridPane {
 	private CustomerAccount cusAcct;
@@ -35,6 +36,7 @@ public class CustomerProfilePage extends GridPane {
 		add(lblFirstName, 0, 2);
 		add(lblLastName, 0, 3);
 		add(lblGender, 0, 4);
+		add(ImgUtil.loadImgV("bigExit.png"), 5, 0);
 	}
 	
 	public CustomerAccount getCusAcct() {
