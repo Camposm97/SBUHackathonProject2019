@@ -14,7 +14,7 @@ public class Name {
 	public Name(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.gender = Gender.Other;
+		this.gender = Gender.Non_Specified;
 	}
 
 	public String getFirstName() {
