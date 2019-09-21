@@ -1,6 +1,7 @@
 package view;
 
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +24,9 @@ public class MainPage extends BorderPane {
 	private Button loadBtCus() {
 		Button bt = new Button("I am Customer!");
 		bt.setOnAction(e -> {
-			
+			// Change to Customer Login/SignUp Pane
+			Scene scene = this.getScene();
+			scene.setRoot(new CustomerLoginPage());
 		});
 		bt.setOnMouseEntered(e -> {
 			bt.setTextFill(Color.BLUE);
@@ -40,7 +43,7 @@ public class MainPage extends BorderPane {
 	private Button loadBtCo() {
 		Button bt = new Button("I am Company!");
 		bt.setOnAction(e -> {
-			
+			// Change to Company Login/Signup Pane
 		});
 		bt.setOnMouseEntered(e -> {
 			bt.setTextFill(Color.BLUE);
