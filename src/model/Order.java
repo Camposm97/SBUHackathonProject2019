@@ -1,17 +1,17 @@
 package model;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class Order implements Serializable {
+public class Order {
 	private WorkType typeOfWork;
-	private MaterialCase matCase;
+	private Material material;
+	private String price;
 	private Customer cus;
 	
-	public Order(WorkType typeOfWork, MaterialCase matCase, Customer cus) {
+	public Order(WorkType typeOfWork, Material material, String price, Customer cus) {
 		this.typeOfWork = typeOfWork;
-		this.matCase = matCase;
+		this.material = material;
+		this.price = price;
 		this.cus = cus;
+		
 	}
 
 	public WorkType getTypeOfWork() {
@@ -22,12 +22,20 @@ public class Order implements Serializable {
 		this.typeOfWork = typeOfWork;
 	}
 
-	public MaterialCase getMatCase() {
-		return matCase;
+	public Material getMaterial() {
+		return material;
 	}
 
-	public void setMatCase(MaterialCase matCase) {
-		this.matCase = matCase;
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 	public Customer getCus() {
@@ -37,4 +45,7 @@ public class Order implements Serializable {
 	public void setCus(Customer cus) {
 		this.cus = cus;
 	}
+	
+	
+	
 }

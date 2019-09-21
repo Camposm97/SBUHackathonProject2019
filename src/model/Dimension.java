@@ -33,8 +33,4 @@ public class Dimension implements Serializable {
 		return width * length * WASTE_PERCENT;
 	}
 
-	@Override
-	public String toString() {
-		return "Dimension [width=" + width + ", length=" + length + "]";
-	}
 }
