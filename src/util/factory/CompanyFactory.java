@@ -12,9 +12,11 @@ import util.Util;
 public class CompanyFactory {
 	private static final String COMPANY_NAMES = "data/companyNames";
 	private List<String> names;
+	private MaterialCaseFactory matCaseFactory;
 	
 	public CompanyFactory() throws FileNotFoundException {
 		names = new LinkedList<>();
+		matCaseFactory = new MaterialCaseFactory();
 		Scanner in = new Scanner(new File(COMPANY_NAMES));
 		while (in.hasNextLine()) {
 			String line = in.nextLine();
@@ -25,7 +27,7 @@ public class CompanyFactory {
 	
 	public Company emitCompany() {
 		String name = names.get((int)(Math.random() * names.size()));
-		Company c = new Company(name, Util.emitCompEmail(name), Util.emitPhone());
+		Company c = new Company(name, matCaseFactory.emitMaterialCases(), Util.emitCompEmail(name), Util.emitPhone());
 		return c;
 	}
 }

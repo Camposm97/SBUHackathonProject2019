@@ -8,7 +8,7 @@ public class MaterialCase implements Serializable {
 	private double quantity;
 	private double pricePerCase;
 	
-	public MaterialCase(Material mat, int quantity, double pricePerCase) {
+	public MaterialCase(Material mat, double quantity, double pricePerCase) {
 		this.mat = mat;
 		this.quantity = quantity;
 		this.pricePerCase = pricePerCase;
