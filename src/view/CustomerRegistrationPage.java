@@ -1,5 +1,6 @@
 package view;
 
+import app.App;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import model.Customer;
+import model.CustomerAccount;
 import model.Gender;
 import model.Name;
 import util.FXUtil;
@@ -42,15 +45,18 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerStreetAddress.setTextFill(Color.BLACK);
 		customerStreetAddress.setFont(new Font("Arial", 24));
 		Label customerZipCode = new Label("Zipcode: ");
+		Label customerUsername = new Label("Username: ");
 		customerZipCode.setTextFill(Color.BLACK);
 		customerZipCode.setFont(new Font("Arial", 24));
 		TextField genderTextField = new TextField();
+
 		TextField customerFirstNameText = new TextField();
 		TextField customerLastNameText = new TextField();
 		TextField customerEmailText = new TextField();
 		PasswordField customerPasswordText = new PasswordField();
 		TextField customerStreetAddressText = new TextField();
 		TextField customerZipCodeText = new TextField();
+		TextField customerUsernameText = new TextField();
 
 		Button customerGetProfilePic = new Button("Upload Profile Picture");
 		customerGetProfilePic.setFont(new Font("Arial", 18));
@@ -59,12 +65,17 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerConfirmRegister.setOnAction(e -> {
 			Scene scene = this.getScene();
 			
-			ComboBox<Gender> cb = FXUtil.loadCb(Gender.values());
-			Name name = new Name(customerFirstNameText.getText(), customerLastNameText.getText(), cb.getValue());
-			
 			
 			
 			scene.setRoot(new CustomerLoginPage());
+			ComboBox<Gender> cb = FXUtil.loadCb(Gender.values());
+			Name name = new Name(customerFirstNameText.getText(), customerLastNameText.getText(), cb.getValue());
+			
+			Customer cus = new Customer(name);
+			
+			CustomerAccount cusAcc = new CustomerAccount(customerUsernameText.getText(), customerPasswordText.getText(), cus);
+			
+			App.accts.put(customerUsernameText.getText(), cusAcc);
 		});
 
 		
@@ -85,8 +96,8 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerGridPane.add(customerFirstNameText, 1, 0);
 		customerGridPane.add(customerLastName, 0, 1);
 		customerGridPane.add(customerLastNameText, 1, 1);
-		customerGridPane.add(customerZipCode, 0, 2);
-		customerGridPane.add(customerZipCodeText, 1, 2);
+		customerGridPane.add(customerGender, 0, 2);
+		customerGridPane.add(genderTextField, 1, 2);
 		customerGridPane.add(customerEmail, 0, 3);
 		customerGridPane.add(customerEmailText, 1, 3);
 		customerGridPane.add(customerPassword, 0, 4);
@@ -95,6 +106,8 @@ public class CustomerRegistrationPage extends BorderPane {
 		customerGridPane.add(customerStreetAddressText, 1, 5);
 		customerGridPane.add(customerZipCode, 0, 6);
 		customerGridPane.add(customerZipCodeText, 1, 6);
+		customerGridPane.add(customerUsername, 0, 7);
+		customerGridPane.add(customerUsernameText, 1, 7);
 
 		customerGridPane.setPadding(new Insets(50, 20, 50, 200));
 		customerGridPane.setAlignment(Pos.CENTER);
