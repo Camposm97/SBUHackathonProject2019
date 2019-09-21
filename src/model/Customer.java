@@ -6,10 +6,11 @@ import java.util.LinkedList;
 @SuppressWarnings("serial")
 public class Customer implements Serializable {
 	private Name name;
-	private LinkedList<Order> orders;
+	private LinkedList<Order> orderList;
 	
 	public Customer(Name name) {
 		this.name = name;
+		this.orderList = new LinkedList<>();
 	}
 	
 	public Name getName() {
@@ -17,6 +18,6 @@ public class Customer implements Serializable {
 	}
 	
 	public LinkedList<Order> getOrders() {
-		return orders;
+		return orderList;
 	}
 }
