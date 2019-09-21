@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -84,6 +86,46 @@ public class CompanyProfile extends BorderPane {
 
 		vBox.getChildren().addAll(testLogo, littleBox, address, actualAddress, littleBox2, specialtyDummy1,
 				specialtyDummy2, specialtyDummy3);
+		
+		
+		Label rating = new Label("Ratings: ");
+		rating.setFont(new Font("Arial", 30));
+		Image starImage = new Image("usestar.jpg");
+		ImageView starView = new ImageView(starImage);
+		Label ratingNumber = new Label("10.0");
+		ratingNumber.setFont(new Font("Arial", 30));
+		starView.setFitWidth(40);
+		starView.setFitHeight(40);
+		starView.setOpacity(0.5);
+		
+		HBox starBox = new HBox(5);
+		starBox.getChildren().addAll(rating, ratingNumber, starView);
+		
+		VBox generalInfo = new VBox(20);
+		
+		Label companyName = new Label("Company Name");
+		companyName.setFont(new Font("Arial", 36));
+		companyName.setUnderline(true);
+		
+		HBox imagesOfWork = new HBox(20);
+		ScrollPane i1 = new ScrollPane();
+		i1.setPrefSize(150, 150);
+		ScrollPane i2 = new ScrollPane();
+		i2.setPrefSize(150, 150);
+		ScrollPane i3 = new ScrollPane();
+		i3.setPrefSize(150, 150);
+		imagesOfWork.getChildren().addAll(i1, i2, i3);
+		
+		Label prevWork = new Label("Previous Work");
+		prevWork.setFont(new Font("Arial", 22));
+		prevWork.setUnderline(true);
+		Separator sep3  = new Separator(Orientation.HORIZONTAL);
+		sep3.setPrefSize(400, 20);
+		generalInfo.getChildren().addAll(companyName, starBox, sep3 ,prevWork,  imagesOfWork);
+		
+		//generalInfo.getChildren().addAll(companyName, starBox);
+		generalInfo.setPadding(new Insets(60, 20, 20 ,20));
+		setCenter(generalInfo);
 		setLeft(vBox);
 
 		setTop(hBoxRoot);
