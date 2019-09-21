@@ -129,7 +129,7 @@ public class CompanyProfilePage extends BorderPane {
 		hBox.getChildren().addAll(iv1, iv2, iv3);
 		return hBox;
 	}
-	
+
 	private Button loadBtSearch() {
 		Button bt = new Button("Search Materials");
 		bt.setPrefWidth(FXUtil.BTN_WIDTH);
