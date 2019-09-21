@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -48,6 +49,8 @@ public class CustomerLoginPage extends BorderPane {
 				if (user.getPassword().equals(password)) {
 					lblNote.setText("Login Successful! :D");
 					lblNote.setTextFill(Color.GREEN);
+					Scene scene = getScene();
+					scene.setRoot(new CustomerProfilePage((CustomerAccount) user)); 
 				} else {
 					lblNote.setText("Failed to Login :(");
 					lblNote.setTextFill(Color.RED);
@@ -58,6 +61,11 @@ public class CustomerLoginPage extends BorderPane {
 			}
 		});
 		btLogin.setFont(new Font(16));
+		setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
+				btLogin.fire();
+			}
+		});
 		Button btGoBack = new Button("Go Back");
 		btGoBack.setOnAction(e -> {
 			Scene scene = this.getScene();

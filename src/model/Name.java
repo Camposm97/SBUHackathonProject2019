@@ -17,7 +17,7 @@ public class Name implements Serializable {
 	public Name(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.gender = Gender.Non_Specified;
+		this.gender = Gender.Not_Specified;
 	}
 
 	public String getFirstName() {

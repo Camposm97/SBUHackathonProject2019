@@ -15,6 +15,8 @@ public class CustomerAccountFactory {
 	public CustomerAccount emitCusAcct() {
 		Customer cus = cusFactory.emitCus();
 		CustomerAccount cusAcct = new CustomerAccount(Util.emitUsername(cus.getName()), Util.emitPassword(), cus);
+		char c = Character.toLowerCase(cus.getName().getFirstName().charAt(0));
+		cusAcct.setImageUrl(c + ".png");
 		return cusAcct;
 	}
 }

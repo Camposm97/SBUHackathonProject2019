@@ -31,15 +31,15 @@ public abstract class UserAccount implements Serializable {
 		this.password = password;
 	}
 
-	protected Image getImage() {
+	public Image getImage() {
 		return new Image(imageUrl);
 	}
 
-	protected void setImageUrl(String imageUrl) {
+	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 
-	protected String getImageUrl(String imageUrl) {
+	public String getImageUrl(String imageUrl) {
 		return imageUrl;
 	}
 }
