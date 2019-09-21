@@ -12,6 +12,10 @@ public class CustomerViewer extends GridPane {
 	public CustomerViewer(CustomerAccount cusAcct) {
 		this.cusAcct = cusAcct;
 		setPadding(FXUtil.DEFAULT_INSETS);
+		addNodes();
+	}
+	
+	private void addNodes() {
 		Label lbl = new Label("Customer Viewer: ");
 		lbl.setFont(Font.font(24));
 		Label lblFirstName = new Label("First Name: " + cusAcct.getCus().getName().getFirstName());
@@ -21,7 +25,6 @@ public class CustomerViewer extends GridPane {
 		add(lblFirstName, 0, 1);
 		add(lblLastName, 0, 2);
 		add(lblGender, 0, 3);
-		
 	}
 	
 	public CustomerAccount getCusAcct() {

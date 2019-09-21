@@ -9,6 +9,7 @@ import model.UserAccount;
 import view.MainPage;
 
 public class Demo extends Application {
+	public static final String APP_TITLE = "";
 	private TreeMap<UserAccount, String> userAccounts;
 	
 	@Override

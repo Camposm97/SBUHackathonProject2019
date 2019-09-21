@@ -6,10 +6,15 @@ public class Name {
 	private Gender gender;
 	
 	public Name(String firstName, String lastName, Gender gender) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
+	}
+	
+	public Name(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = Gender.Other;
 	}
 
 	public String getFirstName() {

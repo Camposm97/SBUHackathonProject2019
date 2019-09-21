@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Company {
@@ -12,6 +13,13 @@ public class Company {
 		super();
 		this.name = name;
 		this.materialList = materialList;
+		this.email = email;
+		this.phone = phone;
+	}
+	
+	public Company(String name, String email, String phone) {
+		this.name = name;
+		this.materialList = new LinkedList<>();
 		this.email = email;
 		this.phone = phone;
 	}
