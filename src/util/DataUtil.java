@@ -1,8 +1,11 @@
 package util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Set;
 import java.util.TreeMap;
 
 import app.App;
@@ -16,11 +19,35 @@ public class DataUtil {
 		emitData();
 	}
 	
-	public static TreeMap<String, UserAccount> loadData() {
-		TreeMap<String, UserAccount> accts = new TreeMap<>();
+	@SuppressWarnings("unchecked")
+	public static TreeMap<String, UserAccount> loadDataMap() {
+		TreeMap<String, UserAccount> accts = null;
+		try {
+			accts = (TreeMap<String, UserAccount>) loadData(FILE_ACCTS);
+			Set<String> set = accts.keySet();
+			for (String s : set) {
+				UserAccount acct = accts.get(s);
+				System.out.println(acct.getUsername() + ", " + acct.getPassword());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return accts;
 	}
-
+	
+	public static Object loadData(File file) {
+		Object o = null;
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			o = ois.readObject();
+			ois.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return o;
+	}
+	
 	public static void saveData(File file, Object o) {
 		try {
 			FileOutputStream fis = new FileOutputStream(file);

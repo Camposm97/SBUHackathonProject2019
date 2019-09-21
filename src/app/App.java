@@ -16,15 +16,15 @@ public class App extends Application {
 	
 	@Override
 	public void init() {
-		accts = DataUtil.loadData();
+		accts = DataUtil.loadDataMap();
 	}
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setScene(new Scene(new MainPage()));
+		stage.setScene(new Scene(new MainPage(), 900, 500));
 		stage.getIcons().add(ImgUtil.loadImg("images/e.png"));
-		stage.setResizable(false);
-		stage.setMaximized(true);
+//		stage.setResizable(false);
+//		stage.setMaximized(true);
 		stage.setTitle(TITLE);
 		stage.show();
 	}
