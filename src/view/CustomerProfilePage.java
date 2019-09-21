@@ -24,7 +24,7 @@ public class CustomerProfilePage extends GridPane {
 	private void initNodes() {
 		Label lbl = new Label("Customer Profile Page:");
 		lbl.setFont(new Font(32));
-		Image image = cusAcct.getImage();
+		Image image = ImgUtil.loadImg("images/" + cusAcct.getImageUrl());
 		ImageView iv = new ImageView(image);
 		iv.setFitWidth(image.getWidth()*.15);
 		iv.setFitHeight(image.getHeight()*.15);
@@ -36,7 +36,7 @@ public class CustomerProfilePage extends GridPane {
 		add(lblFirstName, 0, 2);
 		add(lblLastName, 0, 3);
 		add(lblGender, 0, 4);
-		add(ImgUtil.loadImgV("bigExit.png"), 5, 0);
+		add(ImgUtil.loadImgV("images/exitBig.png"), 5, 0);
 	}
 	
 	public CustomerAccount getCusAcct() {

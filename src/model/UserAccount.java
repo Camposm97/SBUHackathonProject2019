@@ -39,7 +39,7 @@ public abstract class UserAccount implements Serializable {
 		this.imageUrl = imageUrl;
 	}
 
-	public String getImageUrl(String imageUrl) {
+	public String getImageUrl() {
 		return imageUrl;
 	}
 
