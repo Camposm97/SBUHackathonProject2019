@@ -8,6 +8,7 @@ public class CompanyAccount extends UserAccount implements Serializable {
 	
 	public CompanyAccount(String username, String password, Company c) {
 		super(username, password);
+		this.c = c;
 	}	
 	
 	public Company getC() {
@@ -16,5 +17,10 @@ public class CompanyAccount extends UserAccount implements Serializable {
 	
 	public void setC(Company c) {
 		this.c = c;
+	}
+
+	@Override
+	public String toString() {
+		return "CompanyAccount [" + super.toString() + "c=" + c + "]";
 	}
 }

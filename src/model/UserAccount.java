@@ -42,4 +42,9 @@ public abstract class UserAccount implements Serializable {
 	public String getImageUrl(String imageUrl) {
 		return imageUrl;
 	}
+
+	@Override
+	public String toString() {
+		return "UserAccount [username=" + username + ", password=" + password + "]";
+	}
 }

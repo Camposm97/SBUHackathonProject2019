@@ -5,14 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class Company  implements Serializable {
+public class Company implements Serializable {
 	private String name;
-	private List<MaterialCrate> materialList;
+	private List<MaterialCase> materialList;
 	private String email;
 	private String phone;
 
-	public Company(String name, List<MaterialCrate> materialList, String email, String phone) {
-		super();
+	public Company(String name, List<MaterialCase> materialList, String email, String phone) {
 		this.name = name;
 		this.materialList = materialList;
 		this.email = email;
@@ -34,11 +33,11 @@ public class Company  implements Serializable {
 		this.name = name;
 	}
 
-	public List<MaterialCrate> getMaterialList() {
+	public List<MaterialCase> getMaterialList() {
 		return materialList;
 	}
 
-	public void setMaterialList(List<MaterialCrate> materialList) {
+	public void setMaterialList(List<MaterialCase> materialList) {
 		this.materialList = materialList;
 	}
 
@@ -56,5 +55,10 @@ public class Company  implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Company [name=" + name + "]";
 	}
 }

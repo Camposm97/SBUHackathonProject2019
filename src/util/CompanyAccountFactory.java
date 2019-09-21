@@ -12,9 +12,11 @@ public class CompanyAccountFactory {
 		cf = new CompanyFactory();
 	}
 	
-	public CompanyAccount emitCompAcct() {
+	public CompanyAccount emitCoAcct() {
 		Company c = cf.emitCompany();
-		CompanyAccount compAcct = new CompanyAccount(Util.emitCoUser(c), Util.emitPassword(), c);
-		return compAcct;
+		CompanyAccount coAcct = new CompanyAccount(Util.emitCoUser(c), Util.emitPassword(), c);
+		char ch = Character.toLowerCase((c.getName().charAt(0)));
+		coAcct.setImageUrl(ch + ".png");
+		return coAcct;
 	}
 }

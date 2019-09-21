@@ -5,14 +5,12 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Material implements Serializable {
 	private String name;
-	private Dimension dimensions;
-	private double pricePerUnit;
+	private Dimension dim;
 
-	public Material(String name, Dimension dimensions, double pricePerUnit) {
+	public Material(String name, Dimension dim) {
 		super();
 		this.name = name;
-		this.dimensions = dimensions;
-		this.pricePerUnit = pricePerUnit;
+		this.dim = dim;
 	}
 
 	public String getName() {
@@ -23,19 +21,7 @@ public class Material implements Serializable {
 		this.name = name;
 	}
 
-	public Dimension getDimensions() {
-		return dimensions;
-	}
-
-	public void setDimensions(Dimension dimensions) {
-		this.dimensions = dimensions;
-	}
-
-	public double getPricePerUnit() {
-		return pricePerUnit;
-	}
-
-	public void setPricePerUnit(double price) {
-		this.pricePerUnit = price;
+	public Dimension getDim() {
+		return dim;
 	}
 }

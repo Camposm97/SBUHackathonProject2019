@@ -40,6 +40,8 @@ public class MainPage extends BorderPane {
 		Button bt = new ColorButton("I am Company!", Color.BLUE);
 		bt.setOnAction(e -> {
 			// Change to Company Login/Signup Pane
+			Scene scene = this.getScene();
+			scene.setRoot(new CompanyLoginPage());
 		});
 		bt.prefWidthProperty().bind(this.widthProperty().divide(2));
 		bt.prefHeightProperty().bind(this.heightProperty());

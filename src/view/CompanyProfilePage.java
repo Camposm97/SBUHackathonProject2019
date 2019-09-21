@@ -14,52 +14,45 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import model.CompanyAccount;
+import util.FXUtil;
+import util.ImgUtil;
 
-public class CompanyProfile extends BorderPane {
+public class CompanyProfilePage extends BorderPane {
+	private CompanyAccount coAcct;
 
-	public CompanyProfile() {
+	public CompanyProfilePage(CompanyAccount coAcct) {
+		this.coAcct = coAcct;
+		initNodes();
+	}
 
+	private void initNodes() {
 		HBox hBoxRoot = new HBox(600);
 		HBox hBox1 = new HBox(15);
-		HBox hBox2 = new HBox(15);
 
-		Label logoName = new Label("Sample Logo");
+		Label logoName = new Label("Logo Goes Here");
 		logoName.setFont(new Font("Arial", 26));
 		logoName.setTextFill(Color.BLUE);
 		hBox1.getChildren().add(logoName);
 		hBox1.setPadding(new Insets(15, 15, 15, 70));
 		hBox1.setAlignment(Pos.CENTER_LEFT);
 
-		Button searchCustomerOrders = new Button("Find Orders");
-		searchCustomerOrders.setFont(new Font("Arial", 18));
-
-		Button messages = new Button("Messages");
-		messages.setFont(new Font("Arial", 18));
-
-		Button previousJobs = new Button("Previous Jobs");
-		previousJobs.setFont(new Font("Arial", 18));
-
-		hBox2.getChildren().addAll(searchCustomerOrders, messages, previousJobs);
-		hBox2.setPadding(new Insets(15));
-
-		hBox2.setAlignment(Pos.CENTER_RIGHT);
-
-		hBoxRoot.getChildren().addAll(hBox1, hBox2);
+		hBoxRoot.getChildren().addAll(hBox1);
 
 		VBox vBox = new VBox(20);
 		vBox.setPadding(new Insets(60, 20, 20, 50));
 
 		HBox littleBox = new HBox();
-		Label littleLable = new Label("Info");
-		littleLable.setFont(new Font("Arial", 15));
+		Label lblLittle = new Label("Info");
+		lblLittle.setFont(new Font("Arial", 15));
 
-		ScrollPane testLogo = new ScrollPane();
-		testLogo.setMinSize(150, 150);
+		Image img = coAcct.getImage();
+		ImageView ivLogo = ImgUtil.loadHalfImgV(img);
 
 		Separator sep = new Separator(Orientation.HORIZONTAL);
 		sep.setPrefSize(200, 20);
 
-		littleBox.getChildren().addAll(littleLable, sep);
+		littleBox.getChildren().addAll(lblLittle, sep);
 		littleBox.setOpacity(0.5);
 
 		Label address = new Label("Address");
@@ -84,10 +77,9 @@ public class CompanyProfile extends BorderPane {
 		littleBox2.getChildren().addAll(littleLabel2, sep2);
 		littleBox2.setOpacity(0.5);
 
-		vBox.getChildren().addAll(testLogo, littleBox, address, actualAddress, littleBox2, specialtyDummy1,
+		vBox.getChildren().addAll(ivLogo, littleBox, address, actualAddress, littleBox2, specialtyDummy1,
 				specialtyDummy2, specialtyDummy3);
-		
-		
+
 		Label rating = new Label("Ratings: ");
 		rating.setFont(new Font("Arial", 30));
 		Image starImage = new Image("usestar.jpg");
@@ -97,16 +89,32 @@ public class CompanyProfile extends BorderPane {
 		starView.setFitWidth(40);
 		starView.setFitHeight(40);
 		starView.setOpacity(0.5);
-		
+
 		HBox starBox = new HBox(5);
 		starBox.getChildren().addAll(rating, ratingNumber, starView);
-		
+
 		VBox generalInfo = new VBox(20);
-		
-		Label companyName = new Label("Company Name");
-		companyName.setFont(new Font("Arial", 36));
-		companyName.setUnderline(true);
-		
+
+		Label lblCoName = new Label(coAcct.getC().getName());
+		lblCoName.setFont(new Font("Arial", 36));
+		lblCoName.setUnderline(true);
+
+		Label prevWork = new Label("Previous Work");
+		prevWork.setFont(new Font("Arial", 22));
+		prevWork.setUnderline(true);
+		Separator sep3 = new Separator(Orientation.HORIZONTAL);
+		sep3.setPrefSize(400, 20);
+		generalInfo.getChildren().addAll(lblCoName, starBox, sep3, prevWork, loadPrevWork());
+
+		// generalInfo.getChildren().addAll(companyName, starBox);
+		generalInfo.setPadding(new Insets(60, 20, 20, 20));
+		setCenter(generalInfo);
+		setLeft(vBox);
+		setRight(loadBtnBox());
+		setTop(hBoxRoot);
+	}
+	
+	public HBox loadPrevWork() {
 		HBox imagesOfWork = new HBox(20);
 		ScrollPane i1 = new ScrollPane();
 		i1.setPrefSize(150, 150);
@@ -115,21 +123,33 @@ public class CompanyProfile extends BorderPane {
 		ScrollPane i3 = new ScrollPane();
 		i3.setPrefSize(150, 150);
 		imagesOfWork.getChildren().addAll(i1, i2, i3);
-		
-		Label prevWork = new Label("Previous Work");
-		prevWork.setFont(new Font("Arial", 22));
-		prevWork.setUnderline(true);
-		Separator sep3  = new Separator(Orientation.HORIZONTAL);
-		sep3.setPrefSize(400, 20);
-		generalInfo.getChildren().addAll(companyName, starBox, sep3 ,prevWork,  imagesOfWork);
-		
-		//generalInfo.getChildren().addAll(companyName, starBox);
-		generalInfo.setPadding(new Insets(60, 20, 20 ,20));
-		setCenter(generalInfo);
-		setLeft(vBox);
-
-		setTop(hBoxRoot);
-
+		return imagesOfWork;
 	}
 
+	public VBox loadBtnBox() {
+		Button btSearch = new Button("Find Orders"); // Search Customer Orders
+		btSearch.setPrefWidth(FXUtil.BTN_WIDTH);
+		btSearch.setOnAction(e -> {
+
+		});
+		btSearch.setFont(new Font(18));
+
+		Button btMessages = new Button("Messages"); // Only display
+		btMessages.setPrefWidth(FXUtil.BTN_WIDTH);
+		btMessages.setOnAction(e -> {
+			
+		});
+		btMessages.setFont(new Font(18));
+
+		Button btPrev = new Button("Previous Jobs"); // Order Request History
+		btPrev.setPrefWidth(FXUtil.BTN_WIDTH);
+		btPrev.setOnAction(e -> {
+			
+		});
+		btPrev.setFont(new Font(18));
+
+		VBox vBox = FXUtil.loadVBox(btSearch, btMessages, btPrev);
+		vBox.setPadding(FXUtil.DEFAULT_INSETS);
+		return vBox;
+	}
 }

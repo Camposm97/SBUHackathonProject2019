@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 
 public class FXUtil {
 	public static final Insets DEFAULT_INSETS = new Insets(10);
+	public static final int BTN_WIDTH = 150;
 	
 	public static VBox loadVBox(Node...nodes) {
 		VBox vBox = new VBox(10);

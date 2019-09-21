@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Dimension implements Serializable {
-	private double width, height, length;
+	private static final double WASTE_PERCENT = 0.15;
+	private double width, length;
 
-	public Dimension(double width, double height, double length) {
+	public Dimension(double width, double length) {
 		super();
 		this.width = width;
-		this.height = height;
 		this.length = length;
 	}
 
@@ -21,20 +21,16 @@ public class Dimension implements Serializable {
 		this.width = width;
 	}
 
-	public double getHeight() {
-		return height;
-	}
-
-	public void setHeight(double height) {
-		this.height = height;
-	}
-
 	public double getLength() {
 		return length;
 	}
 
 	public void setLength(double length) {
 		this.length = length;
+	}
+	
+	public double calcTotalSquareFoot() {
+		return width * length * WASTE_PERCENT;
 	}
 
 }

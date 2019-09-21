@@ -16,11 +16,9 @@ public class UserAccountFactory {
 	
 	public UserAccount emitAcct() {
 		int i = (int) (Math.random() * 2);
-		switch (i) {
-		case 0:
-			return  cusAcctFactory.emitCusAcct();
-		default:
-			return coAcctFactory.emitCompAcct();
+		if (i == 0) {
+			return cusAcctFactory.emitCusAcct();
 		}
+		return coAcctFactory.emitCoAcct();
 	}
 }

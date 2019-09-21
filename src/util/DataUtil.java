@@ -28,7 +28,7 @@ public class DataUtil {
 			Set<String> set = accts.keySet();
 			for (String s : set) {
 				UserAccount acct = accts.get(s);
-				System.out.println(acct.getUsername() + ", " + acct.getPassword());
+				System.out.println(acct);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
