@@ -24,4 +24,13 @@ public class Material implements Serializable {
 	public Dimension getDim() {
 		return dim;
 	}
+
+	public void setDim(Dimension dim) {
+		this.dim = dim;
+	}
+
+	@Override
+	public String toString() {
+		return "Material [name=" + name + ", dim=" + dim + "]";
+	}
 }

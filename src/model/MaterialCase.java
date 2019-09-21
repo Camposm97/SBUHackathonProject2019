@@ -8,7 +8,7 @@ public class MaterialCase implements Serializable {
 	private double quantity;
 	private double pricePerCase;
 	
-	public MaterialCase(Material mat, int quantity, double pricePerCase) {
+	public MaterialCase(Material mat, double quantity, double pricePerCase) {
 		this.mat = mat;
 		this.quantity = quantity;
 		this.pricePerCase = pricePerCase;
@@ -32,5 +32,10 @@ public class MaterialCase implements Serializable {
 	
 	public double calcMatPrice() {
 		return Math.ceil(quantity) * pricePerCase;
+	}
+
+	@Override
+	public String toString() {
+		return "MaterialCase [mat=" + mat + ", quantity=" + quantity + ", pricePerCase=" + pricePerCase + "]";
 	}
 }

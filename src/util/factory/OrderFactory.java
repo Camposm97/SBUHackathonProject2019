@@ -1,11 +1,16 @@
 package util.factory;
 
+import java.io.FileNotFoundException;
+
 import model.Order;
 import model.WorkType;
 
 public class OrderFactory {
-	public OrderFactory() {
-		
+	private MaterialCaseFactory matCaseFactory;
+	private CustomerFactory cusFactory;
+	
+	public OrderFactory() throws FileNotFoundException {
+		matCaseFactory = new MaterialCaseFactory();
 	}
 	
 	public WorkType emitWorkType() {
@@ -13,7 +18,8 @@ public class OrderFactory {
 	}
 	
 	public Order emitOrder() {
-		return null;
-//		Order order = new Order(emitWorkType());
+		Order order = new Order(emitWorkType(), 
+				matCaseFactory.emitMaterialCase(), cusFactory.emitCus());
+		return order;
 	}
 }
