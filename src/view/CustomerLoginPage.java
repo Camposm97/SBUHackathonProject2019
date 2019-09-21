@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -19,12 +18,9 @@ import javafx.scene.text.Font;
 import model.CustomerAccount;
 import model.UserAccount;
 
-public class CustomerLoginPage extends BorderPane {
-
+public class CustomerLoginPage extends LoginPage {
+	
 	public CustomerLoginPage() {
-		Label lblTitle = new Label(App.TITLE);
-		lblTitle.setFont(Font.font(48));
-		setTop(new StackPane(lblTitle));
 		setCenter(loadGridPane());
 	}
 	
@@ -38,9 +34,41 @@ public class CustomerLoginPage extends BorderPane {
 		lblPassword.setFont( new Font(24));		
 		TextField tfUsername = new TextField();
 		PasswordField tfPassword = new PasswordField();
-		Button btLogin = new Button("Login");
-		btLogin.setPrefWidth(128);
-		btLogin.setOnAction(e -> {
+		
+		setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
+				bt.fire();
+			}
+		});
+		Button btGoBack = new Button("Go Back");
+		btGoBack.setOnAction(e -> {
+			Scene scene = this.getScene();
+			scene.setRoot(new MainPage());
+		});
+		gridPane.setHgap(10);
+		gridPane.setVgap(10);
+		gridPane.add(new StackPane(lblNote), 0, 0, 2, 1);
+		gridPane.add(lblUsername, 0, 1);
+		gridPane.add(tfUsername, 1, 1);
+		gridPane.add(lblPassword, 0, 2);
+		gridPane.add(tfPassword, 1, 2);
+		gridPane.add(new StackPane(bt), 0, 3, 4, 1);
+		setPadding(new Insets(25));
+		gridPane.setAlignment(Pos.CENTER);
+		
+		HBox hBox = new HBox(10);
+		btGoBack.setFont(new Font(16));
+		hBox.getChildren().addAll(btGoBack);
+		hBox.setAlignment(Pos.BOTTOM_LEFT);
+		setBottom(hBox);
+		return gridPane;
+	}
+
+	@Override
+	public Button loadBtLogin() {
+		Button bt = new Button("Login");
+		bt.setPrefWidth(128);
+		bt.setOnAction(e -> {
 			// Attempt to Login
 			String username = tfUsername.getText();
 			String password = tfPassword.getText();
@@ -60,33 +88,6 @@ public class CustomerLoginPage extends BorderPane {
 				lblNote.setTextFill(Color.RED);
 			}
 		});
-		btLogin.setFont(new Font(16));
-		setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.ENTER) {
-				btLogin.fire();
-			}
-		});
-		Button btGoBack = new Button("Go Back");
-		btGoBack.setOnAction(e -> {
-			Scene scene = this.getScene();
-			scene.setRoot(new MainPage());
-		});
-		gridPane.setHgap(10);
-		gridPane.setVgap(10);
-		gridPane.add(new StackPane(lblNote), 0, 0, 2, 1);
-		gridPane.add(lblUsername, 0, 1);
-		gridPane.add(tfUsername, 1, 1);
-		gridPane.add(lblPassword, 0, 2);
-		gridPane.add(tfPassword, 1, 2);
-		gridPane.add(new StackPane(btLogin), 0, 3, 4, 1);
-		setPadding(new Insets(25));
-		gridPane.setAlignment(Pos.CENTER);
-		
-		HBox hBox = new HBox(10);
-		btGoBack.setFont(new Font(16));
-		hBox.getChildren().addAll(btGoBack);
-		hBox.setAlignment(Pos.BOTTOM_LEFT);
-		setBottom(hBox);
-		return gridPane;
+		bt.setFont(new Font(16));
 	}
 }
